@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-Step Form</title>
+  <link rel="stylesheet" href="form.css" />
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Progress Indicator -->
+    <div class="progress-stepper">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <div class="step-indicator active" data-step="0">1</div>
+      <div class="step-indicator" data-step="1">2</div>
+      <div class="step-indicator" data-step="2">3</div>
+      <div class="step-indicator" data-step="3">4</div>
+    </div>
+
+    <!-- Multi-step Form -->
+    <form id="multiStepForm" novalidate>
+      <div class="form-steps-viewport">
+        <!-- Step 1: Personal Details -->
+        <section class="form-step active">
+          <h2 class="step-title">Personal Details</h2>
+          <p class="step-subtitle">Please enter your contact details.</p>
+
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Talha Khattak" required />
+            <span class="error-text" id="fullNameError">Full name is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="name@gmail.com" required />
+            <span class="error-text" id="emailError">Please enter a valid email address.</span>
+          </div>
+        </section>
+
+        <!-- Step 2: Account Details -->
+        <section class="form-step">
+          <h2 class="step-title">Account Security</h2>
+          <p class="step-subtitle">Choose your credentials.</p>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="talha12" minlength="4" required />
+            <span class="error-text" id="usernameError">Username must be at least 4 characters long.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" minlength="6" required />
+            <span class="error-text" id="passwordError">Password must be at least 6 characters.</span>
+          </div>
+        </section>
+
+        <!-- Step 3: Preferences -->
+        <section class="form-step">
+          <h2 class="step-title">Role Preferences</h2>
+          <p class="step-subtitle">Select your preferences.</p>
+
+          <div class="form-group">
+            <label for="role">Target Role</label>
+            <select id="role" name="role" required>
+              <option value="">Select a role...</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="Full-Stack Engineer">Full-Stack Engineer</option>
+            </select>
+            <span class="error-text" id="roleError">Please select a target role.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="experience">Experience Level</label>
+            <select id="experience" name="experience" required>
+              <option value="">Select experience...</option>
+              <option value="Junior / Student">Junior / Student</option>
+              <option value="Mid-Level">Mid-Level</option>
+              <option value="Senior">Senior</option>
+            </select>
+            <span class="error-text" id="experienceError">Please select your experience level.</span>
+          </div>
+        </section>
+
+        <!-- Step 4: Summary -->
+        <section class="form-step">
+          <h2 class="step-title">Review & Confirm</h2>
+          <p class="step-subtitle">Check your details before final submission.</p>
+
+          <div class="summary-card" id="summaryContainer">
+            <!-- Dynamically populated by script.js -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Navigation Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" id="prevBtn" disabled>Previous</button>
+        <button type="button" class="btn-primary" id="nextBtn">Next</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="form.js"></script>
+</body>
+</html>
